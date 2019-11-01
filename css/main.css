@@ -1,0 +1,174 @@
+/*fonts*/
+@font-face {
+  font-family: "Antartida Rounded Family";
+  src: url("../assets/fonts/AntartidaRoundedFamily/Latinotype - AntartidaRounded-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../assets/fonts/SourceSansPro/source-sans-pro-v13-latin-regular.eot");
+  src: url("../assets/fonts/SourceSansPro/source-sans-pro-v13-latin-regular.woff2") format("woff2"), url("../assets/fonts/SourceSansPro/source-sans-pro-v13-latin-regular.woff") format("woff"), url("../assets/fonts/SourceSansPro/source-sans-pro-v13-latin-regular.ttf") format("truetype"), url("../assets/fonts/SourceSansPro/source-sans-pro-v13-latin-regular.svg") format("svg");
+}
+
+/*variables*/
+/*Sass Maps 
+Create a class of maybe colors for your page
+we can add as many colors as we want inside the SASS map*/
+/*functions*/
+/*mixins*/
+/*mediaquery
+--getting the site responsive to different screens*/
+/*you can create multiple mixins for multiple viewports*/
+body,
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Source Sans Pro";
+  margin: 0;
+}
+
+body #bg {
+  -webkit-clip-path: polygon(100% 0, 100% 82%, 45% 100%, 0 100%, 0 0);
+          clip-path: polygon(100% 0, 100% 82%, 45% 100%, 0 100%, 0 0);
+  background-color: #005dff;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+@media (min-width: 840px) {
+  body #bg {
+    -webkit-clip-path: polygon(0 0, 85% 0, 56% 100%, 0 100%);
+            clip-path: polygon(0 0, 85% 0, 56% 100%, 0 100%);
+    /*what we will define as content for the mixin*/
+  }
+}
+
+body header a {
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  display: block;
+  text-transform: uppercase;
+}
+
+@media (min-width: 840px) {
+  main {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 50% auto;
+        grid-template-columns: 50% auto;
+        grid-template-areas: "primary card";
+    /*defines ids under main*/
+    /*what we will define as content for the mixin*/
+  }
+}
+
+main section#card {
+  background-color: #fff;
+  padding: 20px;
+  margin: 1em auto;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 80%;
+}
+
+@media (min-width: 840px) {
+  main section#card {
+    grid-area: card;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    margin: 1em;
+    /*what we will define as content for the mixin*/
+  }
+}
+
+main section#card ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+main section#card ul li {
+  margin-bottom: 10px;
+}
+
+main section#card ul li span {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #ccdfff;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+main section#card ul li strong {
+  display: inline-block;
+  margin-left: 40px;
+  margin-top: 10px;
+}
+
+main section#primary {
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+}
+
+@media (min-width: 840px) {
+  main section#primary {
+    grid-area: primary;
+    text-align: left;
+    margin: 4em 0 0 4em;
+    /*what we will define as content for the mixin*/
+  }
+}
+
+main section#primary h1 {
+  font-size: 3em;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 840px) {
+  main section#primary h1 {
+    width: 30%;
+    font-size: 2em;
+    line-height: 0.9em;
+    /*what we will define as content for the mixin*/
+  }
+}
+
+main section#primary p {
+  font-size: 1.4em;
+}
+
+main section#primary a {
+  color: #001333;
+  border-radius: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #fff6bb;
+  display: block;
+  text-align: center;
+  margin: 50px auto 0 auto;
+  padding: 15px;
+}
+
+@media (min-width: 840px) {
+  main section#primary a {
+    display: inline-block;
+    padding: 15px 60px;
+    /*math in sass*/
+    /*what we will define as content for the mixin*/
+  }
+}
+/*# sourceMappingURL=main.css.map */

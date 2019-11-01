@@ -1,0 +1,178 @@
+/*fonts*/
+
+@font-face {
+  font-family: "Antartida Rounded Family";
+  src: url("../assets/fonts/AntartidaRoundedFamily/Latinotype\ -\ AntartidaRounded-Medium.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../assets/fonts/SourceSansPro/source-sans-pro-v13-latin-regular.eot");
+  src: url("../assets/fonts/SourceSansPro/source-sans-pro-v13-latin-regular.woff2")
+      format("woff2"),
+    url("../assets/fonts/SourceSansPro/source-sans-pro-v13-latin-regular.woff")
+      format("woff"),
+    url("../assets/fonts/SourceSansPro/source-sans-pro-v13-latin-regular.ttf")
+      format("truetype"),
+    url("../assets/fonts/SourceSansPro/source-sans-pro-v13-latin-regular.svg")
+      format("svg");
+}
+
+/*variables*/
+
+/*Sass Maps 
+Create a class of maybe colors for your page
+we can add as many colors as we want inside the SASS map*/
+
+$colors: (
+  primary: #005dff,
+  primary-light: lighten(#005dff, 40%),
+  primary-dark: darken(#005dff, 40%),
+  accent: #fff6bb
+);
+
+$padding: 15px;
+$borders: 15px;
+
+/*functions*/
+@function color-picker($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+/*mixins*/
+/*mediaquery
+--getting the site responsive to different screens*/
+$desktop: 840px;
+
+/*you can create multiple mixins for multiple viewports*/
+@mixin desktop-view {
+  @media (min-width: #{$desktop}) {
+    @content; /*what we will define as content for the mixin*/
+  }
+}
+
+body,
+html {
+  height: 100%;
+}
+body {
+  font-family: "Source Sans Pro";
+  margin: 0;
+
+  #bg {
+    clip-path: polygon(100% 0, 100% 82%, 45% 100%, 0 100%, 0 0);
+    background-color: color-picker(primary);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+
+    @include desktop-view {
+      clip-path: polygon(0 0, 85% 0, 56% 100%, 0 100%);
+    }
+  }
+
+  header a {
+    color: white;
+    text-decoration: none;
+    padding: $padding;
+    display: block;
+    text-transform: uppercase;
+  }
+}
+
+main {
+  @include desktop-view {
+    display: grid;
+    grid-template-columns: 50% auto;
+    grid-template-areas: "primary card"; /*defines ids under main*/
+  }
+
+  section#card {
+    background-color: #fff;
+    padding: 20px;
+    margin: 1em auto;
+    border-radius: $borders;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 80%;
+
+    @include desktop-view {
+      grid-area: card;
+      height: fit-content;
+      align-self: center;
+      margin: 1em;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-bottom: 10px;
+
+        span {
+          position: absolute;
+          width: 30px;
+          height: 30px;
+          background-color: color-picker(primary-light);
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+
+        strong {
+          display: inline-block;
+          margin-left: max(40px);
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+
+  section#primary {
+    color: #fff;
+    padding: $padding;
+    text-align: center;
+
+    @include desktop-view {
+      grid-area: primary;
+      text-align: left;
+      margin: 4em 0 0 4em;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 10px;
+      text-transform: uppercase;
+
+      @include desktop-view {
+        width: 30%;
+        font-size: 2em;
+        line-height: 0.9em;
+      }
+    }
+
+    p {
+      font-size: 1.4em;
+    }
+
+    a {
+      color: color-picker(primary-dark);
+      border-radius: $borders;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      background-color: color-picker(accent);
+      display: block;
+      text-align: center;
+      margin: 50px auto 0 auto;
+      padding: $padding;
+
+      @include desktop-view {
+        display: inline-block;
+        padding: $padding $padding * 4; /*math in sass*/
+      }
+    }
+  }
+}
